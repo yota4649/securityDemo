@@ -77,25 +77,11 @@
 
 <script>
 import axios from "axios";
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue';
-//import mlInput from '@/components/ml-search/ml-input.vue';
-//import mlResults from '@/components/ml-search/ml-results.vue';
-
-//import mlSimilar from '@/components/ml-similar.vue';
-//import friendlyJson from '@/components/friendly-json.vue';
-//import friendlyXml from '@/components/friendly-xml.vue';
 
 export default {
   name: 'Landing-page',
   components: {
- //   mlSimilar,
-//    friendlyJson,
-//    friendlyXml,
-//    mlInput,
- //   mlResults,
 
- //   HelloWorld,
   },
   //props: ['type', 'id'],
   data() {
@@ -103,46 +89,15 @@ export default {
     return {
       users: ["admin","yota","nobody"],
       selectedUser: 'admin',
-      //qtext:'',
-      //metadata: {},
+
       json: undefined,
-      //raw: undefined,
-     // tabIndex: 0,
-      //checkedCollections: [],
       queryString: " ",
-      //assetHref: " ",
 
       headers: ["balance","age","eyeColor","name","gender","company","email","phone"],
-/*
-      items:[
-        {
-          text: " ",
-          active: true,
-        },
-      ],
-*/
+
     };
   },
   computed: {
-  /*
-    uri() {
-      return this.metadata.uri || '';
-    },
-    profile() {
-      return this.$store.state.auth.profile || {};
-    },
-    viewUri() {
-      return '/api/crud/' + this.type + '/' + this.id + '?';
-    },
-    downloadUri() {
-      return this.viewUri + 'download=true';
-    },
-    handleDownload() {
-      console.log('it is downloaded');
-      console.log(this.viewUri + 'download=true');
-      return this.viewUri + 'download=true';
-    }
-    */
   },
   mounted() {
     this.update();
@@ -154,20 +109,13 @@ export default {
     },
 
     buttonExecSearch(){
-        //window.alert("Collection Added");
-        console.log("yota   buttonExecSearch"+this.queryString);
         var para = {};
         para["rs:user"] = this.selectedUser; //encodeURIComponent(this.id);
-        //para["rs.op"] = "Add";
         para["rs:query"] = this.queryString;
 
         axios
           .get("/v1/resources/execJSearch?rs:user="+this.selectedUser+"&rs:query="+this.queryString, para)
           .then((response) => {
-             console.log("  yota buttonExecSearch ++++++++ RESPONSE ++++++++")
-             console.log(response.data);
-             //this.$router.go({path: this.$router.currentRoute.path, force: true});
-            // this.update();
             this.json = response.data;
           })
           .catch((e) => {
@@ -176,20 +124,13 @@ export default {
     },
     
     userChange(){
-       //window.alert("Collection Added");
-        console.log("yota   buttonExecSearch"+this.queryString);
         var para = {};
-        para["rs:user"] = this.selectedUser; //encodeURIComponent(this.id);
-        //para["rs.op"] = "Add";
+        para["rs:user"] = this.selectedUser; 
         para["rs:query"] = this.queryString;
 
         axios
           .get("/v1/resources/execJSearch?rs:user="+this.selectedUser+"&rs:query="+this.queryString, para)
           .then((response) => {
-             console.log("  yota buttonExecSearch ++++++++ RESPONSE ++++++++")
-             console.log(response.data);
-             //this.$router.go({path: this.$router.currentRoute.path, force: true});
-            // this.update();
             this.json = response.data;
           })
           .catch((e) => {

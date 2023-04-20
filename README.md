@@ -1,3 +1,26 @@
+1. clone this repository
+2. cd marklogic
+3.1 ./gradlew mlDeploy -i
+3.2 ./gradlew loadSampleData -i   you may need JDK12 for this mlcp
+4. cd ..
+5. npm install
+6. edit ui/.env to change PORT and HOST
+7. npm start
+8. access HOST:PORT (changed at 6 above)
+
+
+login as admin
+search at Home tab , like entering Frank
+try to change user 
+
+user list is hardcoded in ui/src/views/
+
+
+
+
+
+
+
 # grove-vue-template
 
 Project template for Grove stack including:
